@@ -25,7 +25,7 @@ function fnTrendingMenu( $skin, &$bar ) {
 		$title = str_replace ("_", " ", $title);
 		$url = $row['page'];
 		$trendingArticles[] = array (
-			'title' => $title,
+			'text' => $title,
 			'href' => $url
 		);
 	}
