@@ -7,13 +7,15 @@ class TrendingMenuApi extends ApiBase {
                 // Set the squid & private cache time in seconds
                 $this->getMain()->setCacheMaxAge( 300 );
 
-		/* includes from TLs codebase */
-		require_once ($_SERVER['DOCUMENT_ROOT'] . '/../../public_html/includes/connect.php');
-		require_once ($_SERVER['DOCUMENT_ROOT'] . '/../../public_html/includes/functions.php');
-
 		$trendingArticles = array ();
-                global $wgScriptPath;
-                $r = mysql_queryS ("SELECT * FROM wiki_hot WHERE wiki = '" . mysql_real_escape_string (substr($wgScriptPath, 1)) . "' ORDER BY hits DESC LIMIT 5");
+
+		/* includes from TLs codebase */
+
+		global $wgScriptPath;
+		global $TL_DB;
+
+		mysql_select_db ($TL_DB);
+                $r = mysql_query ("SELECT * FROM wiki_hot WHERE wiki = '" . mysql_real_escape_string (substr($wgScriptPath, 1)) . "' ORDER BY hits DESC LIMIT 5");
                 while ($row = mysql_fetch_assoc ($r)) {
                         $title = $row['title'];
                         $title = str_replace ("_", " ", $title);
