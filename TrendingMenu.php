@@ -1,9 +1,5 @@
 <?php
 
-/* includes from TLs codebase */
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/../../public_html/includes/connect.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/../../public_html/includes/functions.php');
-
 $wgExtensionCredits['api'][] = array(
 								'name' => 'TrendingMenu',
 								'author' =>'Alex Winkler',
