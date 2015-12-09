@@ -2,7 +2,7 @@
 
 $wgExtensionCredits['api'][] = array(
 								'name' => 'TrendingMenu',
-								'author' =>'Alex Winkler',
+								'author' =>'Alex Winkler, Richard Stanway',
 								'url' => 'http://FO-nTTaX.de',
 								'description' => 'Shows most popular pages on the wiki.',
 								'descriptionmsg' => "trendingmenu-desc",
