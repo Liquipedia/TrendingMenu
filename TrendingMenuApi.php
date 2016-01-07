@@ -14,7 +14,7 @@ class TrendingMenuApi extends ApiBase {
 		global $wgScriptPath;
 		global $TL_DB;
 
-		mysql_select_db ($TL_DB);
+		@mysql_select_db ($TL_DB);
                 $r = mysql_query ("SELECT * FROM wiki_hot WHERE wiki = '" . mysql_real_escape_string (substr($wgScriptPath, 1)) . "' ORDER BY hits DESC LIMIT 5");
                 while ($row = mysql_fetch_assoc ($r)) {
                         $title = $row['title'];
