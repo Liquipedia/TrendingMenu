@@ -5,8 +5,8 @@
 		"Alex Winkler",
                 "Richard Stanway"
 	],
-	"url": "https://www.mediawiki.org/wiki/Extension:BoilerPlate",
-	"descriptionmsg": "hows most popular pages on the wiki.",
+	"url": "http://wiki.teamliquid.net/",
+	"descriptionmsg": "Shows most popular pages on the wiki.",
 	"license-name": "MIT",
 	"type": "other",
         "requires": {
