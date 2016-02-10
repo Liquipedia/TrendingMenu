@@ -1,0 +1,36 @@
+{
+	"name": "TrendingMenu",
+	"version": "1.1",
+	"author": [
+		"Alex Winkler",
+                "Richard Stanway"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:BoilerPlate",
+	"descriptionmsg": "hows most popular pages on the wiki.",
+	"license-name": "MIT",
+	"type": "other",
+        "requires": {
+                "MediaWiki": ">= 1.25.0"
+        },
+        "APIModules": {
+                "trendingmenu": "TrendingMenuApi"
+        },
+	"AutoloadClasses": {
+		"TrendingMenuHooks": "TrendingMenuHooks.php",
+                "TrendingMenuApi": "TrendingMenuApi.php"
+	},
+	"Hooks": {
+		"BeforePageDisplay": [
+			"TrendingMenuHooks::beforePageDisplay"
+		]
+	},
+	"ResourceModules": {
+		"ext.trendingmenu": {
+			"scripts": [
+				"js/trendingmenu.js"
+			],
+			"position": "top"
+		}
+	},
+	"manifest_version": 1
+}
