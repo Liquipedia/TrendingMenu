@@ -32,5 +32,9 @@
 			"position": "top"
 		}
 	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "TrendingMenu"
+	},
 	"manifest_version": 1
 }
