@@ -29,7 +29,7 @@
 			"scripts": [
 				"js/trendingmenu.js"
 			],
-			"position": "top"
+			"position": "bottom"
 		}
 	},
 	"ResourceFileModulePaths": {
