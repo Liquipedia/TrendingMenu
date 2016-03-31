@@ -1,5 +1,5 @@
-LiquiFlow
-=========
+LiquiFlow TrendingPages
+=======================
 
 MediaWiki Extension for Liquipedia, provides the trending pages on top of the LiquiFlow MediaWiki skin
 
