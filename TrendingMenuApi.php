@@ -45,7 +45,7 @@ class TrendingMenuApi extends ApiBase {
 
 	public function getExamplesMessages() {
 		return array(
-			'api.php?action=trendingmenu&format=xml'
+			'action=trendingmenu&format=xml'
 			=> 'trendingmenuapi-example'
 		);
 	}
