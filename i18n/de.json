@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+                        "Alex Winkler",
+						"Richard Stanway"
+                ]
+	},
+	"extensionname-trendingmenu": "TrendingMenu",
+	"trendingmenu-desc": "Zeigt die beliebtesten Seiten des Wikis an."
+}

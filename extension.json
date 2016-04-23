@@ -1,12 +1,12 @@
 {
-	"name": "TrendingMenu",
+	"name": "extensionname-trendingmenu",
 	"version": "1.1",
 	"author": [
 		"Alex Winkler",
-                "Richard Stanway"
+		"Richard Stanway"
 	],
 	"url": "http://wiki.teamliquid.net/",
-	"descriptionmsg": "Shows most popular pages on the wiki.",
+	"descriptionmsg": "trendingmenu-desc",
 	"license-name": "MIT",
 	"type": "other",
         "requires": {
@@ -15,6 +15,11 @@
         "APIModules": {
                 "trendingmenu": "TrendingMenuApi"
         },
+	"MessagesDirs": {
+		"TrendingMenu": [
+			"i18n"
+		]
+	},
 	"AutoloadClasses": {
 		"TrendingMenuHooks": "TrendingMenuHooks.php",
                 "TrendingMenuApi": "TrendingMenuApi.php"
