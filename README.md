@@ -8,4 +8,4 @@ Installation
 * Extract the extension folder to extensions/TrendingMenu/
 * Add the following line to LocalSettings.php:
 
-        wfLoadExtension( 'TrendingMenu' );
+	wfLoadExtension( 'TrendingMenu' );

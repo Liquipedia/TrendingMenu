@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-                        "Alex Winkler",
-						"Richard Stanway"
-                ]
+			"Alex Winkler",
+			"Richard Stanway"
+		]
 	},
 	"trendingmenu-desc": "Zeigt die beliebtesten Seiten des Wikis an."
 }

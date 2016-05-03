@@ -9,12 +9,12 @@
 	"descriptionmsg": "trendingmenu-desc",
 	"license-name": "MIT",
 	"type": "other",
-        "requires": {
-                "MediaWiki": ">= 1.25.0"
-        },
-        "APIModules": {
-                "trendingmenu": "TrendingMenuApi"
-        },
+	"requires": {
+		"MediaWiki": ">= 1.25.0"
+	},
+	"APIModules": {
+		"trendingmenu": "TrendingMenuApi"
+	},
 	"MessagesDirs": {
 		"TrendingMenu": [
 			"i18n"
@@ -22,7 +22,7 @@
 	},
 	"AutoloadClasses": {
 		"TrendingMenuHooks": "TrendingMenuHooks.php",
-                "TrendingMenuApi": "TrendingMenuApi.php"
+		"TrendingMenuApi": "TrendingMenuApi.php"
 	},
 	"Hooks": {
 		"BeforePageDisplay": [
