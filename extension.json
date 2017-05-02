@@ -2,7 +2,7 @@
 	"name": "TrendingMenu",
 	"version": "1.1",
 	"author": [
-		"Alex Winkler",
+		"[http://fo-nttax.de Alex Winkler]",
 		"Richard Stanway"
 	],
 	"url": "http://wiki.teamliquid.net/",
@@ -34,7 +34,10 @@
 			"scripts": [
 				"js/trendingmenu.js"
 			],
-			"position": "bottom"
+			"position": "bottom",
+			"dependencies": [
+				"mediawiki.util"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
