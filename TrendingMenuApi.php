@@ -27,7 +27,7 @@ class TrendingMenuApi extends ApiBase {
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $trendingArticles );
-		
+
 		return true;
 	}
 
