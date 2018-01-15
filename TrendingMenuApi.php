@@ -13,7 +13,7 @@ class TrendingMenuApi extends ApiBase {
 		$res = $dbr->select( 'wiki_hot', '*', array( 'wiki' => substr( $wgScriptPath, 1 ) ), __METHOD__, array( 'order' => 'hits DESC', 'limit' => 5 ) );
 		if( $dbr->numRows( $res ) ) {
 			while( $row = $res->fetchObject() ) {
-				$trendingArticles[] = array (
+				$trendingArticles[] = array(
 					'text' => str_replace( '_', ' ', $row->title ),
 					'href' => $row->page,
 				);
