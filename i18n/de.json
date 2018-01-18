@@ -5,5 +5,7 @@
 			"Richard Stanway"
 		]
 	},
-	"trendingmenu-desc": "Zeigt die beliebtesten Seiten des Wikis an."
+	"trendingmenu-desc": "Zeigt die beliebtesten Seiten des Wikis an.",
+	"trendingmenu-shortdesc": "Zeigt die beliebtesten Seiten des Wikis an.",
+	"trendingmenuapi-example": "Hole die beliebtesten Seiten:"
 }

@@ -26,7 +26,7 @@ class TrendingMenuApi extends ApiBase {
 	}
 
 	public function getDescription() {
-		return 'trendingmenu-shortdesc';
+		return wfMessage( 'trendingmenu-shortdesc' )->text();
 	}
 
 	public function getAllowedParams() {

@@ -5,5 +5,7 @@
 			"Richard Stanway"
 		]
 	},
-	"trendingmenu-desc": "Shows most popular pages on the wiki."
+	"trendingmenu-desc": "Shows most popular pages on the wiki.",
+	"trendingmenu-shortdesc": "Shows most popular pages on the wiki.",
+	"trendingmenuapi-example": "Get the most popular pages:"
 }
