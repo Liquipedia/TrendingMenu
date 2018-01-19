@@ -2,7 +2,7 @@
 
 class TrendingMenuApi extends ApiBase {
 	public function execute() {
-		global $wgScriptPath, $TL_DB;
+		global $TL_DB;
 		// Tell squids to cache
 		$this->getMain()->setCacheMode( 'public' );
 		// Set the squid & private cache time in seconds
@@ -10,7 +10,7 @@ class TrendingMenuApi extends ApiBase {
 		$trendingArticles = array();
 
 		$dbr = wfGetDB( DB_REPLICA, '', $TL_DB );
-		$res = $dbr->select( 'wiki_hot', '*', array( 'wiki' => substr( $wgScriptPath, 1 ) ), __METHOD__, array( 'order' => 'hits DESC', 'limit' => 5 ) );
+		$res = $dbr->select( 'wiki_hot', '*', array( 'wiki' => substr( $this->getConfig()->get( 'ScriptPath' ), 1 ) ), __METHOD__, array( 'order' => 'hits DESC', 'limit' => 5 ) );
 		if( $dbr->numRows( $res ) ) {
 			while( $row = $res->fetchObject() ) {
 				$trendingArticles[] = array(
