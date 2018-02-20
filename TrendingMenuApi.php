@@ -14,8 +14,8 @@ class TrendingMenuApi extends ApiBase {
 		if( $dbr->numRows( $res ) ) {
 			while( $row = $res->fetchObject() ) {
 				$trendingArticles[] = array(
-					'text' => str_replace( '_', ' ', $row->title ),
-					'href' => $row->page,
+					'text' => utf8_decode( str_replace( '_', ' ', $row->title ) ),
+					'href' => utf8_decode( $row->page ),
 				);
 			}
 		}
