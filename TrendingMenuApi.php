@@ -1,22 +1,23 @@
 <?php
 
 class TrendingMenuApi extends ApiBase {
+
 	public function execute() {
 		global $TL_DB;
 		// Tell squids to cache
 		$this->getMain()->setCacheMode( 'public' );
 		// Set the squid & private cache time in seconds
 		$this->getMain()->setCacheMaxAge( 300 );
-		$trendingArticles = array();
+		$trendingArticles = [];
 
 		$dbr = wfGetDB( DB_REPLICA, '', $TL_DB );
-		$res = $dbr->select( 'wiki_hot', '*', array( 'wiki' => substr( $this->getConfig()->get( 'ScriptPath' ), 1 ) ), __METHOD__, array( 'order' => 'hits DESC', 'limit' => 5 ) );
-		if( $dbr->numRows( $res ) ) {
-			while( $row = $res->fetchObject() ) {
-				$trendingArticles[] = array(
+		$res = $dbr->select( 'wiki_hot', '*', [ 'wiki' => substr( $this->getConfig()->get( 'ScriptPath' ), 1 ) ], __METHOD__, [ 'ORDER BY' => 'hits DESC', 'LIMIT' => 5 ] );
+		if ( $dbr->numRows( $res ) ) {
+			while ( $row = $res->fetchObject() ) {
+				$trendingArticles[] = [
 					'text' => utf8_decode( str_replace( '_', ' ', $row->title ) ),
 					'href' => htmlspecialchars( utf8_decode( $row->page ) ),
-				);
+				];
 			}
 		}
 
@@ -39,7 +40,8 @@ class TrendingMenuApi extends ApiBase {
 
 	public function getExamplesMessages() {
 		return array(
-			'action=trendingmenu&format=xml' => 'trendingmenuapi-example'
+			'action=trendingmenu&format=json' => 'trendingmenuapi-example'
 		);
 	}
+
 }
