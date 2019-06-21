@@ -9,7 +9,7 @@
 			}
 		},
 		run: function() {
-			mw.loader.using( 'mediawiki.api' ).then( function() {
+			mw.loader.using( [ 'mediawiki.util', 'mediawiki.api' ] ).then( function() {
 				var menuItem = document.getElementById( 'trending-pages-menu' );
 				if ( menuItem !== null ) {
 					var api = new mw.Api();

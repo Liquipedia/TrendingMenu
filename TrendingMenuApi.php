@@ -39,9 +39,9 @@ class TrendingMenuApi extends ApiBase {
 	}
 
 	public function getExamplesMessages() {
-		return array(
+		return [
 			'action=trendingmenu&format=json' => 'trendingmenuapi-example'
-		);
+		];
 	}
 
 }
