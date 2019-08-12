@@ -10,10 +10,7 @@
 	"license-name": "MIT",
 	"type": "other",
 	"requires": {
-		"MediaWiki": ">= 1.31.0",
-		"platform": {
-			"ext-mbstring": "*"
-		}
+		"MediaWiki": ">= 1.31.0"
 	},
 	"APIModules": {
 		"trendingmenu": "TrendingMenuApi"
