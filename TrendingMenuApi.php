@@ -16,7 +16,7 @@ class TrendingMenuApi extends ApiBase {
 			while ( $row = $res->fetchObject() ) {
 				$trendingArticles[] = [
 					'text' => htmlspecialchars( strip_tags( str_replace( '_', ' ', mb_convert_encoding( $row->title, 'Windows-1252', 'UTF-8' ) ) ) ),
-					'href' => htmlspecialchars( $row->page ),
+					'href' => htmlspecialchars( mb_convert_encoding( $row->page, 'Windows-1252', 'UTF-8' ) ),
 				];
 			}
 		}
