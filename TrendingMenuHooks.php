@@ -3,7 +3,7 @@
 class TrendingMenuHooks {
 
 	public static function onBeforePageDisplay( $out, $skin ) {
-		$out->addModuleScripts( 'ext.trendingmenu' );
+		$out->addModules( 'ext.trendingmenu' );
 		return true;
 	}
 
