@@ -10,13 +10,15 @@ class TrendingMenuApi extends ApiBase {
 		$this->getMain()->setCacheMaxAge( 300 );
 		$trendingArticles = [];
 
+		$wiki = substr( $this->getConfig()->get( 'ScriptPath' ), 1);
+
 		$dbr = wfGetDB( DB_REPLICA, '', $TL_DB );
-		$res = $dbr->select( 'wiki_hot', '*', [ 'wiki' => substr( $this->getConfig()->get( 'ScriptPath' ), 1 ) ], __METHOD__, [ 'ORDER BY' => 'hits DESC', 'LIMIT' => 5 ] );
+		$res = $dbr->select( 'wiki_hot', '*', [ 'wiki' => $wiki ], __METHOD__, [ 'ORDER BY' => 'hits DESC', 'LIMIT' => 5 ] );
 		if ( $dbr->numRows( $res ) ) {
 			while ( $row = $res->fetchObject() ) {
 				$trendingArticles[] = [
-					'text' => htmlspecialchars( strip_tags( str_replace( '_', ' ', mb_convert_encoding( $row->title, 'Windows-1252', 'UTF-8' ) ) ) ),
-					'href' => htmlspecialchars( mb_convert_encoding( $row->page, 'Windows-1252', 'UTF-8' ) ),
+					'text' => htmlspecialchars( $row->title ),
+					'href' => htmlspecialchars( "/$wiki/" . $row->page ),
 				];
 			}
 		}
