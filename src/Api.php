@@ -1,6 +1,10 @@
 <?php
 
-class TrendingMenuApi extends ApiBase {
+namespace Liquipedia\TrendingMenu;
+
+use ApiBase;
+
+class Api extends ApiBase {
 
 	public function execute() {
 		global $TL_DB;
@@ -10,7 +14,7 @@ class TrendingMenuApi extends ApiBase {
 		$this->getMain()->setCacheMaxAge( 300 );
 		$trendingArticles = [];
 
-		$wiki = substr( $this->getConfig()->get( 'ScriptPath' ), 1);
+		$wiki = substr( $this->getConfig()->get( 'ScriptPath' ), 1 );
 
 		$dbr = wfGetDB( DB_REPLICA, '', $TL_DB );
 		$res = $dbr->select( 'wiki_hot', '*', [ 'wiki' => $wiki ], __METHOD__, [ 'ORDER BY' => 'hits DESC', 'LIMIT' => 5 ] );

@@ -1,6 +1,6 @@
 {
 	"name": "TrendingMenu",
-	"version": "1.2",
+	"version": "1.3.0",
 	"author": [
 		"[https://fo-nttax.de Alex Winkler]",
 		"Richard Stanway"
@@ -13,20 +13,19 @@
 		"MediaWiki": ">= 1.31.0"
 	},
 	"APIModules": {
-		"trendingmenu": "TrendingMenuApi"
+		"trendingmenu": "Liquipedia\\TrendingMenu\\Api"
 	},
 	"MessagesDirs": {
 		"TrendingMenu": [
 			"i18n"
 		]
 	},
-	"AutoloadClasses": {
-		"TrendingMenuHooks": "TrendingMenuHooks.php",
-		"TrendingMenuApi": "TrendingMenuApi.php"
+	"AutoloadNamespaces": {
+		"Liquipedia\\TrendingMenu\\": "src/"
 	},
 	"Hooks": {
 		"BeforePageDisplay": [
-			"TrendingMenuHooks::onBeforePageDisplay"
+			"Liquipedia\\TrendingMenu\\Hooks::onBeforePageDisplay"
 		]
 	},
 	"ResourceModules": {
