@@ -31,7 +31,7 @@
 	"ResourceModules": {
 		"ext.trendingmenu": {
 			"scripts": [
-				"scripts/trendingmenu.js"
+				"resources/scripts/trendingmenu.js"
 			],
 			"position": "bottom",
 			"dependencies": [

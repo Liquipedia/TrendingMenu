@@ -21,11 +21,11 @@
 						var html = '';
 						for ( var i = 0; i < 5; i++ ) {
 							var skin = mw.config.get( 'skin' );
-							if ( data.trendingmenu[i] ) {
+							if ( data.trendingmenu[ i ] ) {
 								if ( skin === 'bruinen' ) {
-									html += '<a class="dropdown-item" href="' + data.trendingmenu[i].href + '">' + data.trendingmenu[i].text + '</a>';
+									html += '<a class="dropdown-item" href="' + data.trendingmenu[ i ].href + '">' + data.trendingmenu[ i ].text + '</a>';
 								} else {
-									html += '<li><a href="' + data.trendingmenu[i].href + '">' + data.trendingmenu[i].text + '</a></li>';
+									html += '<li><a href="' + data.trendingmenu[ i ].href + '">' + data.trendingmenu[ i ].text + '</a></li>';
 								}
 							}
 						}
