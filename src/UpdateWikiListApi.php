@@ -11,13 +11,8 @@ class UpdateWikiListApi extends ApiBase {
 	 */
 	public function execute() {
 		$data = $this->getRequest()->getText( 'data' );
-		$webRequest = $this->getRequest();
-		if ( $webRequest->wasPosted() ) {
-			Helper::update( $data );
-			$out = [ 'result' => $this->msg( 'wikilist-update-success' )->text() ];
-		} else {
-			$out = [ 'result' => $this->msg( 'wikilist-update-failed' )->text() ];
-		}
+		Helper::update( $data );
+		$out = [ 'result' => $this->msg( 'wikilist-update-success' )->text() ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $out );
 	}
 

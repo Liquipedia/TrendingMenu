@@ -29,7 +29,6 @@
 	"wikilist-wiki-added": "Wiki '$1' added successfully",
 	"wikilist-wiki-empty-error": "Wiki name should not be empty",
 	"wikilist-update-success": "Update Success",
-	"wikilist-update-failed": "Update Failed",
 
 	"wikilist-heading-delete-wiki": "Delete A Wiki",
 	"wikilist-button-delete-wiki": "Delete Wiki",
