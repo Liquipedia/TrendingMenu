@@ -42,7 +42,7 @@ class SpecialModifyWikiList extends SpecialPage {
 
 	private function addWiki() {
 		$heading = $this->msg( 'wikilist-heading-add-wiki' )->text();
-		$this->output->addWikiText( '[[Special:WikiList|Re-order Wikis]]' );
+		$this->output->addWikiText( $this->msg( 'wikilist-re-order-wikis-page' )->text() );
 		$this->output->addWikiText( '==' . $heading . '==' );
 		$formDescriptor = [
 			'WikiName' => [

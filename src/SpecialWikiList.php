@@ -30,7 +30,7 @@ class SpecialWikiList extends SpecialPage {
 	}
 
 	private function displayWikiList() {
-		$this->output->addWikiText( '[[Special:ModifyWikiList|Add/Delete Wikis]]' );
+		$this->output->addWikiText( $this->msg( 'wikilist-update-wikis-page' )->text() );
 		$list = Helper::getWikiList();
 		$table = '<table width="500px" class="wikitable">';
 		$table .= '<tr>'

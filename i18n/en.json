@@ -45,5 +45,8 @@
 	"wikilist-invalid-value": "Invalid value for 'data' parameter",
 	"wikilist-wiki-already-exists": "Wiki '$1' already exists",
 
+	"wikilist-update-wikis-page": "[[Special:ModifyWikiList|Add/Delete Wikis]]",
+	"wikilist-re-order-wikis-page": "[[Special:WikiList|Re-order Wikis]]",
+
 	"updatewikilist-error-action-notallowed": "This API is limited to Administrators only."
 }
