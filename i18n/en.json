@@ -11,7 +11,7 @@
 	"trendingmenuapi-example": "Get the most popular pages:",
 
 	"wikilist": "List of Wikis on the Liquipedia",
-	"action-see-wikilist": "see and re-order list of Wikis on Liquipedia",
+	"action-edit-wikilist": "edit list of Wikis on Liquipedia",
 
 	"wikilist-heading-main-wikis": "Main Wikis",
 	"wikilist-heading-alpha-wikis": "Alpha Wikis",
@@ -19,7 +19,6 @@
 	"wikilist-button-save": "Save",
 
 	"modifywikilist": "Add/Delete a Wiki on Liquipedia",
-	"action-see-modifywikilist": "modify Wikis on Liquipedia",
 	"wikilist-heading-add-wiki": "Add a Wiki",
 	"wikilist-wikiname": "Wiki Name",
 	"wikilist-slug": "Slug",

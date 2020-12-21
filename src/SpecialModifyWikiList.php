@@ -10,6 +10,12 @@ class SpecialModifyWikiList extends SpecialPage {
 
 	/**
 	 *
+	 * @var Output
+	 */
+	private $output;
+
+	/**
+	 *
 	 * @var array
 	 */
 	private $wikiTypes = [
@@ -22,7 +28,7 @@ class SpecialModifyWikiList extends SpecialPage {
 	 *
 	 */
 	public function __construct() {
-		parent::__construct( 'ModifyWikiList', 'see-modifywikilist' );
+		parent::__construct( 'ModifyWikiList', 'edit-wikilist' );
 	}
 
 	/**

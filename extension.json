@@ -34,14 +34,11 @@
 		"ModifyWikiList": "Liquipedia\\TrendingMenu\\SpecialModifyWikiList"
 	},
 	"AvailableRights": [
-		"see-wikilist",
-		"use-updatewikilist"
+		"edit-wikilist"
 	],
 	"GroupPermissions": {
 		"sysop": {
-			"see-wikilist": true,
-			"see-modifywikilist": true,
-			"use-updatewikilist": true
+			"edit-wikilist": true
 		}
 	},
 	"Hooks": {

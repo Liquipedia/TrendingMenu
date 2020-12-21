@@ -18,20 +18,16 @@ class Helper {
 				'*',
 			]
 		);
-		$output = [];
-		$types = [ 'mainWiki', 'alphaWiki', 'preAlphaWiki' ];
-		foreach ( $types as $type ) {
-			if ( $type === 'mainWiki' ) {
-				$name = 'Main Wiki';
-			} elseif ( $type === 'alphaWiki' ) {
-				$name = 'Alpha Wikis';
-			} else {
-				$name = 'Pre Alpha Wikis';
-			}
-			$output[ $type ] = [
-				'name' => $name
-			];
-		}
+		$output = [ 'mainWiki' => [
+				'name' => 'Main Wiki'
+			],
+			'alphaWiki' => [
+				'name' => 'Alpha Wikis'
+			],
+			'preAlphaWiki' => [
+				'name' => 'Pre Alpha Wikis'
+			]
+		];
 		foreach ( $res as $row ) {
 			$output[ $row->type ][ 'items' ][] = [
 				'title' => $row->wiki,

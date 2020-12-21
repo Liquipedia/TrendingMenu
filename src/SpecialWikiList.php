@@ -8,9 +8,15 @@ class SpecialWikiList extends SpecialPage {
 
 	/**
 	 *
+	 * @var Output
+	 */
+	private $output;
+
+	/**
+	 *
 	 */
 	public function __construct() {
-		parent::__construct( 'WikiList', 'see-wikilist' );
+		parent::__construct( 'WikiList', 'edit-wikilist' );
 	}
 
 	/**
@@ -32,7 +38,7 @@ class SpecialWikiList extends SpecialPage {
 	private function displayWikiList() {
 		$this->output->addWikiText( $this->msg( 'wikilist-update-wikis-page' )->text() );
 		$list = Helper::getWikiList();
-		$table = '<table width="500px" class="wikitable">';
+		$table = '<table class="wikitable">';
 		$table .= '<tr>'
 			. '<th>' . $this->msg( 'wikilist-heading-main-wikis' )->text() . '</th>'
 			. '<th>' . $this->msg( 'wikilist-heading-alpha-wikis' )->text() . '</th>'
