@@ -7,8 +7,7 @@ use ApiBase;
 class Api extends ApiBase {
 
 	public function execute() {
-		// phpcs:ignore MediaWiki.NamingConventions.ValidGlobalName.allowedPrefix
-		global $TL_DB;
+		global $TL_DB; // phpcs:ignore
 		// Tell squids to cache
 		$this->getMain()->setCacheMode( 'public' );
 		// Set the squid & private cache time in seconds

@@ -1,0 +1,35 @@
+.wikilist-list {
+	list-style-type: none;
+	margin: 0;
+	background: #eeeeee;
+	padding: 5px;
+	width: 143px;
+	min-height: 1.5em;
+	font-size: 0.85em;
+}
+
+.wikilist-list li {
+	margin: 5px;
+	padding: 5px;
+	font-size: 1.2em;
+	width: 120px;
+}
+
+.wikilist-list li.placeholder {
+	height: 1.8em;
+}
+
+.wikilist-wiki-name {
+	border: 1px solid #bbbbbb;
+	background-color: #fafafa;
+	cursor: move;
+}
+
+.wikilist-wiki-name.ui-sortable-helper {
+	opacity: 0.5;
+}
+
+.placeholder {
+	border: 1px solid #ffa500;
+	background-color: #fffffd;
+}
