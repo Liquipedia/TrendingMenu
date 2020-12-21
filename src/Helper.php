@@ -18,7 +18,8 @@ class Helper {
 				'*',
 			]
 		);
-		$output = [ 'mainWiki' => [
+		$output = [
+			'mainWiki' => [
 				'name' => 'Main Wiki'
 			],
 			'alphaWiki' => [
