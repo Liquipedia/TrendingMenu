@@ -3,7 +3,8 @@
 	"version": "1.3.0",
 	"author": [
 		"[https://fo-nttax.de Alex Winkler]",
-		"Richard Stanway"
+		"Richard Stanway",
+		"Shashank Atreya"
 	],
 	"url": "https://liquipedia.net/",
 	"descriptionmsg": "trendingmenu-desc",
@@ -13,7 +14,12 @@
 		"MediaWiki": ">= 1.31.0"
 	},
 	"APIModules": {
-		"trendingmenu": "Liquipedia\\TrendingMenu\\Api"
+		"trendingmenu": "Liquipedia\\TrendingMenu\\Api",
+		"wikilist": "Liquipedia\\TrendingMenu\\WikiListApi",
+		"updatewikilist": "Liquipedia\\TrendingMenu\\UpdateWikiListApi"
+	},
+	"ExtensionMessagesFiles": {
+		"WikiListAlias": "i18n/WikiListAlias.php"
 	},
 	"MessagesDirs": {
 		"TrendingMenu": [
@@ -23,9 +29,30 @@
 	"AutoloadNamespaces": {
 		"Liquipedia\\TrendingMenu\\": "src/"
 	},
+	"SpecialPages": {
+		"WikiList": "Liquipedia\\TrendingMenu\\SpecialWikiList",
+		"ModifyWikiList": "Liquipedia\\TrendingMenu\\SpecialModifyWikiList"
+	},
+	"AvailableRights": [
+		"see-wikilist",
+		"use-updatewikilist"
+	],
+	"GroupPermissions": {
+		"sysop": {
+			"see-wikilist": true,
+			"see-modifywikilist": true,
+			"use-updatewikilist": true
+		}
+	},
 	"Hooks": {
 		"BeforePageDisplay": [
 			"Liquipedia\\TrendingMenu\\Hooks::onBeforePageDisplay"
+		],
+		"ApiCheckCanExecute": [
+			"Liquipedia\\TrendingMenu\\Hooks::onApiCheckCanExecute"
+		],
+		"LoadExtensionSchemaUpdates": [
+			"Liquipedia\\TrendingMenu\\Hooks::onLoadExtensionSchemaUpdates"
 		]
 	},
 	"ResourceModules": {
@@ -36,6 +63,20 @@
 			"position": "bottom",
 			"dependencies": [
 				"mediawiki.util"
+			]
+		},
+		"ext.WikiList.drag": {
+			"scripts": [
+				"resources/scripts/wikilistdragsort.js"
+			],
+			"position": "bottom",
+			"dependencies": [
+				"jquery.ui.sortable"
+			]
+		},
+		"ext.WikiList.styles": {
+			"styles": [
+				"resources/styles/wikilist.css"
 			]
 		}
 	},

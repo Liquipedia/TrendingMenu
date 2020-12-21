@@ -2,10 +2,49 @@
 	"@metadata": {
 		"authors": [
 			"Alex Winkler",
-			"Richard Stanway"
+			"Richard Stanway",
+			"Shashank Atreya"
 		]
 	},
 	"trendingmenu-desc": "Shows most popular pages on the wiki.",
 	"trendingmenu-shortdesc": "Shows most popular pages on the wiki.",
-	"trendingmenuapi-example": "Get the most popular pages:"
+	"trendingmenuapi-example": "Get the most popular pages:",
+
+	"wikilist": "List of Wikis on the Liquipedia",
+	"action-see-wikilist": "see and re-order list of Wikis on Liquipedia",
+
+	"wikilist-heading-main-wikis": "Main Wikis",
+	"wikilist-heading-alpha-wikis": "Alpha Wikis",
+	"wikilist-heading-pre-alpha-wikis": "Pre-Alpha Wikis",
+	"wikilist-button-save": "Save",
+
+	"modifywikilist": "Add/Delete a Wiki on Liquipedia",
+	"action-see-modifywikilist": "modify Wikis on Liquipedia",
+	"wikilist-heading-add-wiki": "Add a Wiki",
+	"wikilist-wikiname": "Wiki Name",
+	"wikilist-slug": "Slug",
+	"wikilist-slug-help": "Slug should be all lower case with zero spaces. If not provided, would be taken as Wiki name in all lower case with spaces removed. E.g. If the wiki name is 'My New Wiki', its slug would be 'mynewwiki' by default.",
+	"wikilist-type": "Wiki Type",
+	"wikilist-button-add-wiki": "Add Wiki",
+	"wikilist-wiki-added": "Wiki '$1' added successfully",
+	"wikilist-wiki-empty-error": "Wiki name should not be empty",
+	"wikilist-update-success": "Update Success",
+	"wikilist-update-failed": "Update Failed",
+
+	"wikilist-heading-delete-wiki": "Delete A Wiki",
+	"wikilist-button-delete-wiki": "Delete Wiki",
+	"wikilist-wiki-deleted-success": "Wiki '$1' deleted successfully",
+
+	"apihelp-wikilist-summary": "API to get list/hotlist of Wikis on Liquipedia",
+	"apihelp-updatewikilist-summary": "API to update the list of Wikis on Liquipedia. DON'T EXECUTE IT DIRECTLY, ONLY USE THE SPECIAL PAGE TO EXECUTE",
+	"updatewikilist-shortdesc": "API to update the list of Wikis",
+	"updatewikilist-data": "Wiki data in json format",
+	"wikilist-data": "'list' for list of Wikis, 'hot' for Hotlist",
+	"updatewikilist-example": "Example call: (P.S. Does not have the data in proper json format)",
+	"wikilist-example": "Example call:",
+
+	"wikilist-invalid-value": "Invalid value for 'data' parameter",
+	"wikilist-wiki-already-exists": "Wiki '$1' already exists",
+
+	"updatewikilist-error-action-notallowed": "This API is limited to Administrators only."
 }
