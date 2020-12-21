@@ -6,7 +6,7 @@ MediaWiki Extension for Liquipedia, provides the trending pages on top of the Li
 # Installation
 * Extract the extension folder to extensions/TrendingMenu/
 * Add the following line to LocalSettings.php:
-
 ```
 wfLoadExtension( 'TrendingMenu' );
 ```
+* Run the update script
