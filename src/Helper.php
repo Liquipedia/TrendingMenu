@@ -47,10 +47,16 @@ class Helper {
 			'wiki_hot',
 			[
 				'*',
-			]
+			],
+			[],
+			__METHOD__,
+			[ 'ORDER BY' => 'hits DESC' ]
 		);
 		$output = [];
 		foreach ( $res as $row ) {
+			if ( isset( $output[ $row->wiki ] ) && count( $output[ $row->wiki ] ) === 5 ) {
+				continue;
+			}
 			$output[ $row->wiki ][] = [
 				'title' => $row->title,
 				'page' => $row->page
