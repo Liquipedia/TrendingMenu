@@ -27,7 +27,7 @@ class Hooks {
 	public static function onApiCheckCanExecute( $module, $user, &$message ) {
 		$moduleName = $module->getModuleName();
 		if (
-			$moduleName == 'updatewikilist' && !in_array( 'edit-wikilist', $user->getRights() )
+			$moduleName == 'updatewikilist' && $user->isAllowed( 'edit-wikilist' )
 		) {
 			$message = 'updatewikilist-error-action-notallowed';
 			return false;
