@@ -10,6 +10,10 @@ class WikiListApi extends ApiBase {
 	 *
 	 */
 	public function execute() {
+		// Tell squids to cache
+		$this->getMain()->setCacheMode( 'public' );
+		// Set the squid & private cache time in seconds
+		$this->getMain()->setCacheMaxAge( 300 );
 		$data = $this->getRequest()->getText( 'data' );
 		if ( $data === 'list' ) {
 			$out = Helper::getWikiList();

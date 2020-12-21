@@ -32,6 +32,14 @@ class SpecialModifyWikiList extends SpecialPage {
 	}
 
 	/**
+	 * Get group name for Special:SpecialPages
+	 * @return string group name
+	 */
+	public function getGroupName() {
+		return 'liquipedia';
+	}
+
+	/**
 	 * @param string $param
 	 */
 	public function execute( $param ) {
