@@ -56,8 +56,8 @@ class SpecialModifyWikiList extends SpecialPage {
 
 	private function addWiki() {
 		$heading = $this->msg( 'wikilist-heading-add-wiki' )->text();
-		$this->output->addWikiText( $this->msg( 'wikilist-re-order-wikis-page' )->text() );
-		$this->output->addWikiText( '==' . $heading . '==' );
+		$this->output->addWikiTextAsContent( $this->msg( 'wikilist-re-order-wikis-page' )->text() );
+		$this->output->addWikiTextAsContent( '==' . $heading . '==' );
 		$formDescriptor = [
 			'WikiName' => [
 				'type' => 'text',
@@ -121,7 +121,7 @@ class SpecialModifyWikiList extends SpecialPage {
 
 	private function deleteWiki() {
 		$heading = $this->msg( 'wikilist-heading-delete-wiki' )->text();
-		$this->output->addWikiText( '==' . $heading . '==' );
+		$this->output->addWikiTextAsContent( '==' . $heading . '==' );
 		$formDescriptor = [
 			'WikiNameList' => [
 				'type' => 'select',

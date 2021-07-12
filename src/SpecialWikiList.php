@@ -44,7 +44,7 @@ class SpecialWikiList extends SpecialPage {
 	}
 
 	private function displayWikiList() {
-		$this->output->addWikiText( $this->msg( 'wikilist-update-wikis-page' )->text() );
+		$this->output->addWikiTextAsContent( $this->msg( 'wikilist-update-wikis-page' )->text() );
 		$list = Helper::getWikiList();
 		$table = '<table class="wikitable">';
 		$table .= '<tr>'
