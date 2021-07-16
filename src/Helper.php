@@ -11,9 +11,12 @@ class Helper {
 	 */
 	public static function getWikiList() {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'DBname' ) );
+		$dbr = wfGetDB( DB_REPLICA,
+			[],
+			$config->get( 'DBname' ) );
 		$res = $dbr->select(
-			'wiki_list', [
+			'wiki_list',
+			[
 				'*',
 			]
 		);
@@ -41,11 +44,19 @@ class Helper {
 	 * @return array
 	 */
 	public static function getWikiHotList() {
-		$dbr = wfGetDB( DB_REPLICA, [], 'liquid-' );
+		$dbr = wfGetDB(
+			DB_REPLICA,
+			[],
+			'liquid-'
+		);
 		$res = $dbr->select(
-			'wiki_hot', [
+			'wiki_hot',
+			[
 				'*',
-			], [], __METHOD__, [ 'ORDER BY' => 'hits DESC' ]
+			],
+			[],
+			__METHOD__,
+			[ 'ORDER BY' => 'hits DESC' ]
 		);
 		$output = [];
 		foreach ( $res as $row ) {
@@ -67,8 +78,15 @@ class Helper {
 	public static function update( $jsonData ) {
 		$data = json_decode( $jsonData );
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'DBname' ) );
-		$dbw->query( 'TRUNCATE TABLE ' . $dbw->tableName( 'wiki_list' ), __METHOD__ );
+		$dbw = wfGetDB(
+			DB_MASTER,
+			[],
+			$config->get( 'DBname' )
+		);
+		$dbw->query(
+			'TRUNCATE TABLE ' . $dbw->tableName( 'wiki_list' ),
+			__METHOD__
+		);
 		$toInsert = [];
 		foreach ( $data as $type => $details ) {
 			foreach ( $details as $wiki ) {
@@ -79,7 +97,8 @@ class Helper {
 				];
 			}
 		}
-		$dbw->insert( 'wiki_list', $toInsert );
+		$dbw->insert( 'wiki_list',
+			$toInsert );
 	}
 
 	/**
@@ -88,8 +107,15 @@ class Helper {
 	 */
 	public static function add( $wiki ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'DBname' ) );
-		$dbw->insert( 'wiki_list', $wiki );
+		$dbw = wfGetDB(
+			DB_MASTER,
+			[],
+			$config->get( 'DBname' )
+		);
+		$dbw->insert(
+			'wiki_list',
+			$wiki
+		);
 	}
 
 	/**
@@ -99,8 +125,15 @@ class Helper {
 	 */
 	public static function exists( $wiki ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'DBname' ) );
-		$res = $dbr->select( 'wiki_list', '1', [
+		$dbr = wfGetDB(
+			DB_REPLICA,
+			[],
+			$config->get( 'DBname' )
+		);
+		$res = $dbr->select(
+				'wiki_list',
+				'1',
+				[
 					'wiki' => $wiki
 				]
 			)->fetchRow();
@@ -116,9 +149,12 @@ class Helper {
 	 */
 	public static function getWikiNamesForDropList() {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'DBname' ) );
+		$dbr = wfGetDB( DB_REPLICA,
+			[],
+			$config->get( 'DBname' ) );
 		$res = $dbr->select(
-			'wiki_list', [
+			'wiki_list',
+			[
 				'*',
 			]
 		);
@@ -137,8 +173,11 @@ class Helper {
 	 */
 	public static function delete( $slug ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'DBname' ) );
-		$dbw->delete( 'wiki_list', [ 'slug' => $slug ] );
+		$dbw = wfGetDB( DB_MASTER,
+			[],
+			$config->get( 'DBname' ) );
+		$dbw->delete( 'wiki_list',
+			[ 'slug' => $slug ] );
 	}
 
 }
