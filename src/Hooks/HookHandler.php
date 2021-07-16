@@ -9,10 +9,11 @@ use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
 
-class HookHandler
-	implements ApiCheckCanExecuteHook,
+class HookHandler implements
+	ApiCheckCanExecuteHook,
 	BeforePageDisplayHook,
-	LoadExtensionSchemaUpdatesHook {
+	LoadExtensionSchemaUpdatesHook
+{
 
 	/**
 	 * @var Config

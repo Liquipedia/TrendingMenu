@@ -13,8 +13,7 @@ class Helper {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'DBname' ) );
 		$res = $dbr->select(
-			'wiki_list',
-			[
+			'wiki_list', [
 				'*',
 			]
 		);
@@ -44,13 +43,9 @@ class Helper {
 	public static function getWikiHotList() {
 		$dbr = wfGetDB( DB_REPLICA, [], 'liquid-' );
 		$res = $dbr->select(
-			'wiki_hot',
-			[
+			'wiki_hot', [
 				'*',
-			],
-			[],
-			__METHOD__,
-			[ 'ORDER BY' => 'hits DESC' ]
+			], [], __METHOD__, [ 'ORDER BY' => 'hits DESC' ]
 		);
 		$output = [];
 		foreach ( $res as $row ) {
@@ -105,9 +100,7 @@ class Helper {
 	public static function exists( $wiki ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'DBname' ) );
-		$res = $dbr->select( 'wiki_list',
-				'1',
-				[
+		$res = $dbr->select( 'wiki_list', '1', [
 					'wiki' => $wiki
 				]
 			)->fetchRow();
@@ -125,8 +118,7 @@ class Helper {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'DBname' ) );
 		$res = $dbr->select(
-			'wiki_list',
-			[
+			'wiki_list', [
 				'*',
 			]
 		);

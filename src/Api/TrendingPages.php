@@ -18,13 +18,9 @@ class TrendingPages extends ApiBase {
 
 		$dbr = wfGetDB( DB_REPLICA, '', $TL_DB );
 		$res = $dbr->select(
-			'wiki_hot',
-			'*',
-			[
+			'wiki_hot', '*', [
 				'wiki' => $wiki
-			],
-			__METHOD__,
-			[
+			], __METHOD__, [
 				'ORDER BY' => 'hits DESC',
 				'LIMIT' => 5
 			]
