@@ -1,8 +1,9 @@
 <?php
 
-namespace Liquipedia\TrendingMenu;
+namespace Liquipedia\Extension\TrendingMenu\SpecialPage;
 
 use HTMLForm;
+use Liquipedia\Extension\TrendingMenu\Helper;
 use SpecialPage;
 use Status;
 

@@ -1,10 +1,11 @@
 <?php
 
-namespace Liquipedia\TrendingMenu;
+namespace Liquipedia\Extension\TrendingMenu\Api;
 
 use ApiBase;
+use Liquipedia\Extension\TrendingMenu\Helper;
 
-class WikiListApi extends ApiBase {
+class WikiList extends ApiBase {
 
 	/**
 	 *

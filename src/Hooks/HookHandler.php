@@ -1,20 +1,35 @@
 <?php
 
-namespace Liquipedia\TrendingMenu;
+namespace Liquipedia\Extension\TrendingMenu\Hooks;
 
+use Config;
 use DatabaseUpdater;
+use MediaWiki\Api\Hook\ApiCheckCanExecuteHook;
+use MediaWiki\Hook\BeforePageDisplayHook;
+use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
 
-class Hooks {
+class HookHandler implements ApiCheckCanExecuteHook, BeforePageDisplayHook, LoadExtensionSchemaUpdatesHook {
+
+	/**
+	 * @var Config
+	 */
+	private $config;
+
+	/**
+	 * @param Config $config
+	 */
+	public function __construct( Config $config ) {
+		$this->config = $config;
+	}
 
 	/**
 	 * @param OutputPage $out
 	 * @param Skin $skin
 	 * @return bool
 	 */
-	public static function onBeforePageDisplay( $out, $skin ) {
+	public function onBeforePageDisplay( $out, $skin ): void {
 		$out->addModules( 'ext.trendingmenu' );
-		return true;
 	}
 
 	/**
@@ -24,7 +39,7 @@ class Hooks {
 	 *
 	 * @return bool
 	 */
-	public static function onApiCheckCanExecute( $module, $user, &$message ) {
+	public function onApiCheckCanExecute( $module, $user, &$message ) {
 		$moduleName = $module->getModuleName();
 		if (
 			$moduleName == 'updatewikilist' && !$user->isAllowed( 'edit-wikilist' )
@@ -38,7 +53,7 @@ class Hooks {
 	/**
 	 * @param DatabaseUpdater $updater
 	 */
-	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
+	public function onLoadExtensionSchemaUpdates( $updater ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$db = $updater->getDB();
 		if ( !$db->tableExists( $config->get( 'DBname' ) . '.wiki_list', __METHOD__ ) ) {

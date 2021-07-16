@@ -1,6 +1,6 @@
 {
 	"name": "TrendingMenu",
-	"version": "1.3.0",
+	"version": "2.0.0",
 	"author": [
 		"[https://fo-nttax.de Alex Winkler]",
 		"Richard Stanway",
@@ -13,11 +13,6 @@
 	"requires": {
 		"MediaWiki": ">= 1.35.0"
 	},
-	"APIModules": {
-		"trendingmenu": "Liquipedia\\TrendingMenu\\Api",
-		"wikilist": "Liquipedia\\TrendingMenu\\WikiListApi",
-		"updatewikilist": "Liquipedia\\TrendingMenu\\UpdateWikiListApi"
-	},
 	"ExtensionMessagesFiles": {
 		"WikiListAlias": "i18n/WikiListAlias.php"
 	},
@@ -27,12 +22,28 @@
 		]
 	},
 	"AutoloadNamespaces": {
-		"Liquipedia\\TrendingMenu\\": "src/"
+		"Liquipedia\\Extension\\TrendingMenu\\": "src/"
 	},
 	"SpecialPages": {
-		"WikiList": "Liquipedia\\TrendingMenu\\SpecialWikiList",
-		"ModifyWikiList": "Liquipedia\\TrendingMenu\\SpecialModifyWikiList"
+		"WikiList": "Liquipedia\\Extension\\TrendingMenu\\SpecialPage\\SpecialWikiList",
+		"ModifyWikiList": "Liquipedia\\Extension\\TrendingMenu\\SpecialPage\\SpecialModifyWikiList"
 	},
+	"APIModules": {
+		"trendingmenu": "\\Liquipedia\\Extension\\TrendingMenu\\Api\\TrendingPages",
+		"wikilist": "\\Liquipedia\\Extension\\TrendingMenu\\Api\\WikiList",
+		"updatewikilist": "\\Liquipedia\\Extension\\TrendingMenu\\Api\\UpdateWikiList"
+	},
+	"RestRoutes": [
+		{
+			"path": "/trendingmenu/v1/trendingpages",
+			"method": "GET",
+			"class": "Liquipedia\\Extension\\TrendingMenu\\Rest\\TrendingPages",
+			"services": [
+				"MainConfig",
+				"DBLoadBalancerFactory"
+			]
+		}
+	],
 	"AvailableRights": [
 		"edit-wikilist"
 	],
@@ -41,16 +52,18 @@
 			"edit-wikilist": true
 		}
 	},
+	"HookHandlers": {
+		"Main": {
+			"class": "\\Liquipedia\\Extension\\TrendingMenu\\Hooks\\HookHandler",
+			"services": [
+				"MainConfig"
+			]
+		}
+	},
 	"Hooks": {
-		"BeforePageDisplay": [
-			"Liquipedia\\TrendingMenu\\Hooks::onBeforePageDisplay"
-		],
-		"ApiCheckCanExecute": [
-			"Liquipedia\\TrendingMenu\\Hooks::onApiCheckCanExecute"
-		],
-		"LoadExtensionSchemaUpdates": [
-			"Liquipedia\\TrendingMenu\\Hooks::onLoadExtensionSchemaUpdates"
-		]
+		"BeforePageDisplay": "Main",
+		"ApiCheckCanExecute": "Main",
+		"LoadExtensionSchemaUpdates": "Main"
 	},
 	"ResourceModules": {
 		"ext.trendingmenu": {
@@ -81,5 +94,5 @@
 		"localBasePath": "",
 		"remoteExtPath": "TrendingMenu"
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }

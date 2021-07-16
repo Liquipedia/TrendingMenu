@@ -1,10 +1,10 @@
 <?php
 
-namespace Liquipedia\TrendingMenu;
+namespace Liquipedia\Extension\TrendingMenu\Api;
 
 use ApiBase;
 
-class Api extends ApiBase {
+class TrendingPages extends ApiBase {
 
 	public function execute() {
 		global $TL_DB; // phpcs:ignore
@@ -33,7 +33,7 @@ class Api extends ApiBase {
 			foreach ( $res as $row ) {
 				$trendingArticles[] = [
 					'text' => htmlspecialchars( $row->title ),
-					'href' => htmlspecialchars( "/$wiki/" . $row->page ),
+					'href' => htmlspecialchars( '/' . $wiki . '/' . $row->page ),
 				];
 			}
 		}

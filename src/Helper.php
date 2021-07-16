@@ -1,6 +1,6 @@
 <?php
 
-namespace Liquipedia\TrendingMenu;
+namespace Liquipedia\Extensions\TrendingMenu;
 
 use MediaWiki\MediaWikiServices;
 
