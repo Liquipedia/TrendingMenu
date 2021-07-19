@@ -1,6 +1,6 @@
 <?php
 
-namespace Liquipedia\Extension\TrendingMenu\Rest;
+namespace Liquipedia\Extensions\TrendingMenu\Rest;
 
 use Config;
 use MediaWiki\Rest\Response;

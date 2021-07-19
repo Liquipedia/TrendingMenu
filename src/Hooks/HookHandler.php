@@ -1,6 +1,6 @@
 <?php
 
-namespace Liquipedia\Extension\TrendingMenu\Hooks;
+namespace Liquipedia\Extensions\TrendingMenu\Hooks;
 
 use Config;
 use DatabaseUpdater;

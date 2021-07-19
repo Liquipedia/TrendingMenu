@@ -1,6 +1,6 @@
 <?php
 
-namespace Liquipedia\Extension\TrendingMenu\Api;
+namespace Liquipedia\Extensions\TrendingMenu\Api;
 
 use ApiBase;
 
