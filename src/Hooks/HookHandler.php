@@ -7,13 +7,9 @@ use DatabaseUpdater;
 use MediaWiki\Api\Hook\ApiCheckCanExecuteHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
-use MediaWiki\MediaWikiServices;
 
 class HookHandler implements
-	ApiCheckCanExecuteHook,
-	BeforePageDisplayHook,
-	LoadExtensionSchemaUpdatesHook
-{
+ApiCheckCanExecuteHook, BeforePageDisplayHook, LoadExtensionSchemaUpdatesHook {
 
 	/**
 	 * @var Config
@@ -58,10 +54,11 @@ class HookHandler implements
 	 * @param DatabaseUpdater $updater
 	 */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$db = $updater->getDB();
-		if ( !$db->tableExists( $config->get( 'DBname' ) . '.wiki_list', __METHOD__ ) ) {
-			$updater->addExtensionTable( 'wiki_list', __DIR__ . '/../sql/wiki_list.sql' );
+		if ( !$db->tableExists( $this->config->get( 'DBname' ) . '.wiki_list',
+				__METHOD__ ) ) {
+			$updater->addExtensionTable( 'wiki_list',
+				__DIR__ . '/../sql/wiki_list.sql' );
 		}
 	}
 

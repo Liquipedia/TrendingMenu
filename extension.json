@@ -25,8 +25,8 @@
 		"Liquipedia\\Extension\\TrendingMenu\\": "src/"
 	},
 	"SpecialPages": {
-		"WikiList": "Liquipedia\\Extension\\TrendingMenu\\SpecialPage\\SpecialWikiList",
-		"ModifyWikiList": "Liquipedia\\Extension\\TrendingMenu\\SpecialPage\\SpecialModifyWikiList"
+		"WikiList": "\\Liquipedia\\Extension\\TrendingMenu\\SpecialPage\\SpecialWikiList",
+		"ModifyWikiList": "\\Liquipedia\\Extension\\TrendingMenu\\SpecialPage\\SpecialModifyWikiList"
 	},
 	"APIModules": {
 		"trendingmenu": "\\Liquipedia\\Extension\\TrendingMenu\\Api\\TrendingPages",
@@ -37,7 +37,7 @@
 		{
 			"path": "/trendingmenu/v1/trendingpages",
 			"method": "GET",
-			"class": "Liquipedia\\Extension\\TrendingMenu\\Rest\\TrendingPages",
+			"class": "\\Liquipedia\\Extension\\TrendingMenu\\Rest\\TrendingPages",
 			"services": [
 				"MainConfig",
 				"DBLoadBalancerFactory"
