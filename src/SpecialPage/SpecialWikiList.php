@@ -1,8 +1,8 @@
 <?php
 
-namespace Liquipedia\Extensions\TrendingMenu\SpecialPage;
+namespace Liquipedia\Extension\TrendingMenu\SpecialPage;
 
-use Liquipedia\Extensions\TrendingMenu\Helper;
+use Liquipedia\Extension\TrendingMenu\Helper;
 use SpecialPage;
 
 class SpecialWikiList extends SpecialPage {

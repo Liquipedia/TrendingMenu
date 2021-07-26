@@ -1,9 +1,9 @@
 <?php
 
-namespace Liquipedia\Extensions\TrendingMenu\Api;
+namespace Liquipedia\Extension\TrendingMenu\Api;
 
 use ApiBase;
-use Liquipedia\Extensions\TrendingMenu\Helper;
+use Liquipedia\Extension\TrendingMenu\Helper;
 
 class UpdateWikiList extends ApiBase {
 

@@ -22,22 +22,22 @@
 		]
 	},
 	"AutoloadNamespaces": {
-		"Liquipedia\\Extensions\\TrendingMenu\\": "src/"
+		"Liquipedia\\Extension\\TrendingMenu\\": "src/"
 	},
 	"SpecialPages": {
-		"WikiList": "\\Liquipedia\\Extensions\\TrendingMenu\\SpecialPage\\SpecialWikiList",
-		"ModifyWikiList": "\\Liquipedia\\Extensions\\TrendingMenu\\SpecialPage\\SpecialModifyWikiList"
+		"WikiList": "\\Liquipedia\\Extension\\TrendingMenu\\SpecialPage\\SpecialWikiList",
+		"ModifyWikiList": "\\Liquipedia\\Extension\\TrendingMenu\\SpecialPage\\SpecialModifyWikiList"
 	},
 	"APIModules": {
-		"trendingmenu": "\\Liquipedia\\Extensions\\TrendingMenu\\Api\\TrendingPages",
-		"wikilist": "\\Liquipedia\\Extensions\\TrendingMenu\\Api\\WikiList",
-		"updatewikilist": "\\Liquipedia\\Extensions\\TrendingMenu\\Api\\UpdateWikiList"
+		"trendingmenu": "\\Liquipedia\\Extension\\TrendingMenu\\Api\\TrendingPages",
+		"wikilist": "\\Liquipedia\\Extension\\TrendingMenu\\Api\\WikiList",
+		"updatewikilist": "\\Liquipedia\\Extension\\TrendingMenu\\Api\\UpdateWikiList"
 	},
 	"RestRoutes": [
 		{
 			"path": "/trendingmenu/v1/trendingpages",
 			"method": "GET",
-			"class": "\\Liquipedia\\Extensions\\TrendingMenu\\Rest\\TrendingPages",
+			"class": "\\Liquipedia\\Extension\\TrendingMenu\\Rest\\TrendingPages",
 			"services": [
 				"MainConfig",
 				"DBLoadBalancerFactory"
@@ -54,7 +54,7 @@
 	},
 	"HookHandlers": {
 		"Main": {
-			"class": "\\Liquipedia\\Extensions\\TrendingMenu\\Hooks\\HookHandler",
+			"class": "\\Liquipedia\\Extension\\TrendingMenu\\Hooks\\HookHandler",
 			"services": [
 				"MainConfig"
 			]
