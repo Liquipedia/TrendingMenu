@@ -54,7 +54,7 @@
 	},
 	"HookHandlers": {
 		"Main": {
-			"class": "\\Liquipedia\\Extension\\TrendingMenu\\Hooks\\HookHandler",
+			"class": "\\Liquipedia\\Extension\\TrendingMenu\\Hooks\\MainHookHandler",
 			"services": [
 				"MainConfig"
 			]

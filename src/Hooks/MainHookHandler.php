@@ -3,11 +3,10 @@
 namespace Liquipedia\Extension\TrendingMenu\Hooks;
 
 use Config;
-use DatabaseUpdater;
 use MediaWiki\Api\Hook\ApiCheckCanExecuteHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 
-class HookHandler implements
+class MainHookHandler implements
 	ApiCheckCanExecuteHook,
 	BeforePageDisplayHook
 {
