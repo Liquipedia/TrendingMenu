@@ -1,6 +1,6 @@
 {
 	"name": "TrendingMenu",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"author": [
 		"[https://fo-nttax.de Alex Winkler]",
 		"Richard Stanway",
@@ -58,12 +58,15 @@
 			"services": [
 				"MainConfig"
 			]
+		},
+		"Schema": {
+			"class": "\\Liquipedia\\Extension\\TrendingMenu\\Hooks\\SchemaHookHandler"
 		}
 	},
 	"Hooks": {
-		"BeforePageDisplay": "Main",
 		"ApiCheckCanExecute": "Main",
-		"LoadExtensionSchemaUpdates": "Main"
+		"BeforePageDisplay": "Main",
+		"LoadExtensionSchemaUpdates": "Schema"
 	},
 	"ResourceModules": {
 		"ext.trendingmenu": {
