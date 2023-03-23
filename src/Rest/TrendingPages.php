@@ -47,7 +47,7 @@ class TrendingPages extends SimpleHandler {
 				'wiki' => $wiki
 			], __METHOD__, [
 				'ORDER BY' => 'hits DESC',
-				'LIMIT' => 5
+				'LIMIT' => 10
 			]
 		);
 

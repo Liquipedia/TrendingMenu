@@ -22,7 +22,7 @@ class TrendingPages extends ApiBase {
 				'wiki' => $wiki
 			], __METHOD__, [
 				'ORDER BY' => 'hits DESC',
-				'LIMIT' => 5
+				'LIMIT' => 10
 			]
 		);
 		if ( $dbr->numRows( $res ) ) {
