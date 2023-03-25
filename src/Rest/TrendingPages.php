@@ -70,7 +70,7 @@ class TrendingPages extends SimpleHandler {
 	}
 
 	/**
-	 * @return bools
+	 * @return bool
 	 */
 	public function needsWriteAccess() {
 		return false;
