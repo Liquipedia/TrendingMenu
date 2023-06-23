@@ -10,8 +10,10 @@ class Helper {
 	 * @return array
 	 */
 	public static function getWikiList() {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbr = wfGetDB( DB_REPLICA,
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getMainConfig();
+		$loadBalancer = $services->getDBLoadBalancer();
+		$dbr = $loadBalancer->getConnection( DB_REPLICA,
 			[],
 			$config->get( 'DBname' ) );
 		$res = $dbr->select(
@@ -44,7 +46,9 @@ class Helper {
 	 * @return array
 	 */
 	public static function getWikiHotList() {
-		$dbr = wfGetDB(
+		$services = MediaWikiServices::getInstance();
+		$loadBalancer = $services->getDBLoadBalancer();
+		$dbr = $loadBalancer->getConnection(
 			DB_REPLICA,
 			[],
 			'liquid-'
@@ -77,9 +81,11 @@ class Helper {
 	 */
 	public static function update( $jsonData ) {
 		$data = json_decode( $jsonData );
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbw = wfGetDB(
-			DB_MASTER,
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getMainConfig();
+		$loadBalancer = $services->getDBLoadBalancer();
+		$dbw = $loadBalancer->getConnection(
+			DB_PRIMARY,
 			[],
 			$config->get( 'DBname' )
 		);
@@ -106,9 +112,11 @@ class Helper {
 	 * @param string $wiki
 	 */
 	public static function add( $wiki ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbw = wfGetDB(
-			DB_MASTER,
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getMainConfig();
+		$loadBalancer = $services->getDBLoadBalancer();
+		$dbw = $loadBalancer->getConnection(
+			DB_PRIMARY,
 			[],
 			$config->get( 'DBname' )
 		);
@@ -124,8 +132,10 @@ class Helper {
 	 * @return bool
 	 */
 	public static function exists( $wiki ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbr = wfGetDB(
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getMainConfig();
+		$loadBalancer = $services->getDBLoadBalancer();
+		$dbr = $loadBalancer->getConnection(
 			DB_REPLICA,
 			[],
 			$config->get( 'DBname' )
@@ -148,8 +158,10 @@ class Helper {
 	 * @return array
 	 */
 	public static function getWikiNamesForDropList() {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbr = wfGetDB( DB_REPLICA,
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getMainConfig();
+		$loadBalancer = $services->getDBLoadBalancer();
+		$dbr = $loadBalancer->getConnection( DB_REPLICA,
 			[],
 			$config->get( 'DBname' ) );
 		$res = $dbr->select(
@@ -172,8 +184,10 @@ class Helper {
 	 * @param string $slug
 	 */
 	public static function delete( $slug ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbw = wfGetDB( DB_MASTER,
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getMainConfig();
+		$loadBalancer = $services->getDBLoadBalancer();
+		$dbw = $loadBalancer->getConnection( DB_PRIMARY,
 			[],
 			$config->get( 'DBname' ) );
 		$dbw->delete( 'wiki_list',

@@ -3,6 +3,7 @@
 namespace Liquipedia\Extension\TrendingMenu\Api;
 
 use ApiBase;
+use MediaWiki\MediaWikiServices;
 
 class TrendingPages extends ApiBase {
 
@@ -15,8 +16,8 @@ class TrendingPages extends ApiBase {
 		$trendingArticles = [];
 
 		$wiki = substr( $this->getConfig()->get( 'ScriptPath' ), 1 );
-
-		$dbr = wfGetDB( DB_REPLICA, '', $TL_DB );
+		$loadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$dbr = $loadBalancer->getConnection( DB_REPLICA, '', $TL_DB );
 		$res = $dbr->select(
 			'wiki_hot', '*', [
 				'wiki' => $wiki

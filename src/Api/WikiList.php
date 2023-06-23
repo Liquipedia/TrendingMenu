@@ -4,6 +4,7 @@ namespace Liquipedia\Extension\TrendingMenu\Api;
 
 use ApiBase;
 use Liquipedia\Extension\TrendingMenu\Helper;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class WikiList extends ApiBase {
 
@@ -55,9 +56,9 @@ class WikiList extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'data' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
 				ApiBase::PARAM_HELP_MSG => 'wikilist-data',
-				ApiBase::PARAM_REQUIRED => true,
 			]
 		];
 	}

@@ -1,20 +1,20 @@
 ( function( document, mw ) {
-	var button = document.getElementById( 'wikilist-submit-button' );
-	var p = document.getElementById( 'wikilist-button-click-notification' );
+	const button = document.getElementById( 'wikilist-submit-button' );
+	const p = document.getElementById( 'wikilist-button-click-notification' );
 	button.addEventListener( 'click', function() {
-		var wikiTypes = [ 'mainWiki', 'alphaWiki', 'preAlphaWiki' ];
-		var json = { };
+		const wikiTypes = [ 'mainWiki', 'alphaWiki', 'preAlphaWiki' ];
+		const json = { };
 		wikiTypes.forEach( function( type ) {
-			var wikiList = document.getElementById( type ).getElementsByTagName( 'li' );
-			var totalWikis = wikiList.length;
+			const wikiList = document.getElementById( type ).getElementsByTagName( 'li' );
+			const totalWikis = wikiList.length;
 			if ( totalWikis > 0 ) {
 				json[ type ] = [ ];
-				for ( var i = 0; i < totalWikis; i++ ) {
+				for ( let i = 0; i < totalWikis; i++ ) {
 					json[ type ].push( { name: wikiList[ i ].innerText, slug: wikiList[ i ].getAttribute( 'slug-name' ) } );
 				}
 			}
 		} );
-		var api = new mw.Api();
+		const api = new mw.Api();
 		api.post( {
 			action: 'updatewikilist',
 			data: JSON.stringify( json )
