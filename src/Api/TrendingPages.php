@@ -26,7 +26,7 @@ class TrendingPages extends ApiBase {
 				'LIMIT' => 10
 			]
 		);
-		if ( $dbr->numRows( $res ) ) {
+		if ( $res->numRows() ) {
 			foreach ( $res as $row ) {
 				$trendingArticles[] = [
 					'text' => htmlspecialchars( $row->title ),
