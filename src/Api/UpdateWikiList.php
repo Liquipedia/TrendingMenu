@@ -4,6 +4,7 @@ namespace Liquipedia\Extension\TrendingMenu\Api;
 
 use ApiBase;
 use Liquipedia\Extension\TrendingMenu\Helper;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class UpdateWikiList extends ApiBase {
 
@@ -41,21 +42,12 @@ class UpdateWikiList extends ApiBase {
 	/**
 	 * @return array
 	 */
-	public function getExamplesMessages() {
-		return [
-			'action=updatewikilist&data={json_format_data_goes_here}' => 'updatewikilist-example',
-		];
-	}
-
-	/**
-	 * @return array
-	 */
 	public function getAllowedParams() {
 		return [
 			'data' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
 				ApiBase::PARAM_HELP_MSG => 'updatewikilist-data',
-				ApiBase::PARAM_REQUIRED => true,
 			]
 		];
 	}
