@@ -181,4 +181,4 @@ curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'PURGE' );
 curl_setopt( $ch, CURLOPT_URL, "http://127.0.0.1:6081/" );
 curl_exec( $ch );
 $code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
- print "Purge: $code\n";
+print "Purge: $code\n";
