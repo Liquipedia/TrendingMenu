@@ -48,11 +48,8 @@ class Helper {
 	public static function getWikiHotList() {
 		$services = MediaWikiServices::getInstance();
 		$loadBalancer = $services->getDBLoadBalancer();
-		$dbr = $loadBalancer->getConnection(
-			DB_REPLICA,
-			[],
-			'liquid-'
-		);
+		$config = $services->getMainConfig();
+		$dbr = $loadBalancer->getConnection( DB_REPLICA, [], $config->get( 'DBname' ) );
 		$res = $dbr->select(
 			'wiki_hot',
 			[

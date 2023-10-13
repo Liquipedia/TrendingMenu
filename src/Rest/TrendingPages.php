@@ -35,17 +35,20 @@ class TrendingPages extends SimpleHandler {
 	 * @return Response
 	 */
 	public function run(): Response {
-		global $TL_DB; // phpcs:ignores
-
 		$wiki = substr( $this->config->get( 'ScriptPath' ), 1 );
 
-		$loadBalancer = $this->loadBalancerFactory->getMainLB( $TL_DB );
-		$dbr = $loadBalancer->getConnectionRef( DB_REPLICA, [], $TL_DB );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$loadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$dbr = $loadBalancer->getConnection( DB_REPLICA, [], $config->get( 'DBname' ) );
 
 		$res = $dbr->select(
-			'wiki_hot', '*', [
+			'wiki_hot',
+			'*',
+			[
 				'wiki' => $wiki
-			], __METHOD__, [
+			],
+			__METHOD__,
+			[
 				'ORDER BY' => 'hits DESC',
 				'LIMIT' => 10
 			]

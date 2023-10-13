@@ -8,7 +8,6 @@ use MediaWiki\MediaWikiServices;
 class TrendingPages extends ApiBase {
 
 	public function execute() {
-		global $TL_DB; // phpcs:ignore
 		// Tell squids to cache
 		$this->getMain()->setCacheMode( 'public' );
 		// Set the squid & private cache time in seconds
@@ -16,12 +15,17 @@ class TrendingPages extends ApiBase {
 		$trendingArticles = [];
 
 		$wiki = substr( $this->getConfig()->get( 'ScriptPath' ), 1 );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$loadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
-		$dbr = $loadBalancer->getConnection( DB_REPLICA, '', $TL_DB );
+		$dbr = $loadBalancer->getConnection( DB_REPLICA, [], $config->get( 'DBname' ) );
 		$res = $dbr->select(
-			'wiki_hot', '*', [
+			'wiki_hot',
+			'*',
+			[
 				'wiki' => $wiki
-			], __METHOD__, [
+			],
+			 __METHOD__,
+			[
 				'ORDER BY' => 'hits DESC',
 				'LIMIT' => 10
 			]
