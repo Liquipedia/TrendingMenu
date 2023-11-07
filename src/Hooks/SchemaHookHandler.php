@@ -16,10 +16,13 @@ class SchemaHookHandler implements
 	public function onLoadExtensionSchemaUpdates( $updater ) {
 		$db = $updater->getDB();
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		if ( !$db->tableExists( $config->get( 'DBname' ) . '.wiki_list',
+		$tables = [ 'wiki_list', 'wiki_hot', 'wiki_hits' ];
+		foreach ( $tables as $table ) {
+			if ( !$db->tableExists( $config->get( 'DBname' ) . '.' . $table,
 				__METHOD__ ) ) {
-			$updater->addExtensionTable( 'wiki_list',
-				__DIR__ . '/../sql/wiki_list.sql' );
+				$updater->addExtensionTable( $table,
+					__DIR__ . '/../../sql/' . $table . '.sql' );
+			}
 		}
 	}
 
