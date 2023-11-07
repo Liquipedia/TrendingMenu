@@ -1,7 +1,7 @@
 <?php
 chdir( __DIR__ );
 require_once '../../../../../config/db_config.php';
-require_once '../../../lp-config/wikis.php';
+require_once '../../../lp-config/variables/wikis.php';
 
 $db_host = $server;
 $db_name = 'liquipedia';
