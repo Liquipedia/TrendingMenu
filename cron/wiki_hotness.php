@@ -154,28 +154,36 @@ foreach ( $liquipedia_wikis as $wiki => $info ) {
 	}
 }
 
-$db->exec( 'LOCK TABLES wiki_hot WRITE' );
-$db->exec( 'DELETE FROM wiki_hot' );
+for ( $attempts = 0; $attempts < 3; $attempts++ ) {
+	$db->beginTransaction();
 
-foreach ( $wiki_hits as $row ) {
-
-	$url = mb_substr( $row[ 'url' ], 0, 255 );
-	$count = $row[ 'hits' ];
-	$wiki = $row[ 'wiki' ];
-	$title = mb_substr( $row[ 'title' ], 0, 255 );
-
-	$insertData = [
-		'wiki' => $wiki,
-		'url' => $url,
-		'title' => $title,
-		'count' => $count
-	];
+	$db->exec( 'DELETE FROM wiki_hot' );
 
 	$insertSql = 'INSERT INTO wiki_hot (wiki, page, title, hits) VALUES ( :wiki, :url, :title, :count )';
-	$db->prepare( $insertSql )->execute( $insertData );
-}
+	$sth = $db->prepare( $insertSql );
 
-$db->exec( 'UNLOCK TABLES' );
+	foreach ( $wiki_hits as $row ) {
+
+		$url = mb_substr( $row[ 'url' ], 0, 255 );
+		$count = $row[ 'hits' ];
+		$wiki = $row[ 'wiki' ];
+		$title = mb_substr( $row[ 'title' ], 0, 255 );
+
+		$insertData = [
+			'wiki' => $wiki,
+			'url' => $url,
+			'title' => $title,
+			'count' => $count
+		];
+
+		$sth->execute( $insertData );
+	}
+
+	if ( $db->commit() )
+		break;
+
+	sleep ( 1 );
+}
 
 curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'PURGE' );
 curl_setopt( $ch, CURLOPT_URL, "http://127.0.0.1:6081/" );
