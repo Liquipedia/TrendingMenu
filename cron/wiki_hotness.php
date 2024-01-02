@@ -179,10 +179,11 @@ for ( $attempts = 0; $attempts < 3; $attempts++ ) {
 		$sth->execute( $insertData );
 	}
 
-	if ( $db->commit() )
+	if ( $db->commit() ) {
 		break;
+	}
 
-	sleep ( 1 );
+	sleep( 1 );
 }
 
 curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'PURGE' );
