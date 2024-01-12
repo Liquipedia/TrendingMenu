@@ -1,17 +1,11 @@
 <?php
 chdir( __DIR__ );
-require_once '../../../../../config/db_config.php';
+require_once '../../../../../config/secrets.php';
 require_once '../../../lp-config/variables/wikis.php';
-
-$db_host = $server;
-$db_name = 'liquipedia';
-$db_user = $login;
-$db_password = $pass;
-unset( $login, $pass, $server );
 
 $db = null;
 try {
-	$db = new PDO( 'mysql:host=' . $db_host . ';dbname=' . $db_name, $db_user, $db_password );
+	$db = new PDO( 'mysql:host=' . $dbCredentials['wiki']['host'] . ';dbname=' . $dbCredentials['wiki']['database'], $dbCredentials['wiki']['user'], $dbCredentials['wiki']['pass'] );
 	$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 	$db->setAttribute( PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC );
 	$db->setAttribute( PDO::ATTR_EMULATE_PREPARES, false );
