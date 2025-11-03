@@ -16,8 +16,6 @@ if ( $db === null ) {
 	die( 'Could not connect to database' );
 }
 
-$db->exec( 'SET NAMES utf8' );
-
 $wiki_hits = [];
 
 $ch = curl_init();
