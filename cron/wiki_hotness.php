@@ -21,7 +21,7 @@ $db->exec( 'SET NAMES utf8' );
 $wiki_hits = [];
 
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_HTTPHEADER, [ 'Host: liquipedia.net', 'User-Agent: wiki-hotness/0.1' ] );
+curl_setopt( $ch, CURLOPT_HTTPHEADER, [ 'Host: liquipedia.net', 'User-Agent: wiki-hotness/0.1', 'Sec-Purpose: prefetch;anonymous-client-ip' ] );
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 curl_setopt( $ch, CURLOPT_FAILONERROR, true );
 curl_setopt( $ch, CURLOPT_ENCODING, "" );
@@ -82,6 +82,8 @@ foreach ( $liquipedia_wikis as $wiki => $info ) {
 
 				$display_title = html_entity_decode( $display_title, ENT_QUOTES, 'UTF-8' );
 			}
+		} else {
+			$display_title = '';
 		}
 
 		$oldTextSql = 'SELECT old_text '
