@@ -95,6 +95,7 @@ foreach ( $liquipedia_wikis as $wiki => $info ) {
 			. 'AND s.slot_revision_id = f.fp_stable '
 			. 'AND f.fp_page_id = p.page_id '
 			. 'AND p.page_namespace IN (0, 134) '
+			. 'AND p.page_is_redirect = 0 '
 			. 'AND p.page_title = :pageTitle';
 
 		$oldTextStmt = $db->prepare( $oldTextSql );
