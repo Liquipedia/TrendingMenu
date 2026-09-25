@@ -7,6 +7,7 @@ use MediaWiki\MediaWikiServices;
 
 class TrendingPages extends ApiBase {
 
+	/** @inheritDoc */
 	public function execute() {
 		// Tell squids to cache
 		$this->getMain()->setCacheMode( 'public' );

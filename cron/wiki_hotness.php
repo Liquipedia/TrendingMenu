@@ -5,7 +5,13 @@ require_once '../../../lp-config/variables/wikis.php';
 
 $db = null;
 try {
-	$db = new PDO( 'mysql:host=' . $dbCredentials['wiki']['host'] . ';dbname=' . $dbCredentials['wiki']['database'] . ';charset=utf8mb4', $dbCredentials['wiki']['user'], $dbCredentials['wiki']['pass'] );
+	$db = new PDO(
+		'mysql:host=' . $dbCredentials['wiki']['host'] .
+		';dbname=' . $dbCredentials['wiki']['database'] .
+		';charset=utf8mb4',
+		$dbCredentials['wiki']['user'],
+		$dbCredentials['wiki']['pass']
+	);
 	$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 	$db->setAttribute( PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC );
 	$db->setAttribute( PDO::ATTR_EMULATE_PREPARES, false );
@@ -19,7 +25,11 @@ if ( $db === null ) {
 $wiki_hits = [];
 
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_HTTPHEADER, [ 'Host: liquipedia.net', 'User-Agent: wiki-hotness/0.1', 'Sec-Purpose: prefetch;anonymous-client-ip' ] );
+curl_setopt( $ch, CURLOPT_HTTPHEADER, [
+	'Host: liquipedia.net',
+	'User-Agent: wiki-hotness/0.1',
+	'Sec-Purpose: prefetch;anonymous-client-ip'
+] );
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 curl_setopt( $ch, CURLOPT_FAILONERROR, true );
 curl_setopt( $ch, CURLOPT_ENCODING, "" );
