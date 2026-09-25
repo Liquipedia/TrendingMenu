@@ -55,8 +55,8 @@ foreach ( $liquipedia_wikis as $wiki => $info ) {
 		// Try to match MW encoding
 		$encoded_page = rawurlencode( $page );
 		$encoded_page = str_replace(
-			[ '%2F',	'%3A',	'%28',	'%29',	'%21' ],
-			[ '/',	':',	'(',	')',	'!' ],
+			[ '%2F', '%3A', '%28', '%29', '%21' ],
+			[ '/', ':', '(', ')', '!' ],
 			$encoded_page
 		);
 

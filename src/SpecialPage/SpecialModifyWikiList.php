@@ -10,13 +10,11 @@ use Status;
 class SpecialModifyWikiList extends SpecialPage {
 
 	/**
-	 *
 	 * @var Output
 	 */
 	private $output;
 
 	/**
-	 *
 	 * @var array
 	 */
 	private $wikiTypes = [
@@ -25,9 +23,6 @@ class SpecialModifyWikiList extends SpecialPage {
 		'Main Wiki' => 'mainWiki'
 	];
 
-	/**
-	 *
-	 */
 	public function __construct() {
 		parent::__construct( 'ModifyWikiList', 'edit-wikilist' );
 	}
@@ -87,7 +82,6 @@ class SpecialModifyWikiList extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @param array $formData
 	 * @return Status
 	 */
@@ -139,7 +133,6 @@ class SpecialModifyWikiList extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @param array $formData
 	 * @return Status
 	 */
