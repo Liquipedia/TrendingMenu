@@ -9,7 +9,7 @@
 			}
 		},
 		run: function() {
-			mw.loader.using( [ 'mediawiki.util', 'mediawiki.api' ] ).then( function() {
+			mw.loader.using( [ 'mediawiki.util', 'mediawiki.api' ] ).then( () => {
 				const menuItem = document.getElementById( 'trending-pages-menu' );
 				if ( menuItem !== null ) {
 					const api = new mw.Api();
@@ -17,7 +17,7 @@
 						action: 'trendingmenu',
 						uselang: 'content',
 						format: 'json'
-					} ).done( function( data ) {
+					} ).then( ( data ) => {
 						let html = '';
 						for ( let i = 0; i < 5; i++ ) {
 							if ( data.trendingmenu[ i ] ) {
