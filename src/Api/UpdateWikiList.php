@@ -8,9 +8,6 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class UpdateWikiList extends ApiBase {
 
-	/**
-	 *
-	 */
 	public function execute() {
 		$data = $this->getRequest()->getText( 'data' );
 		Helper::update( $data );

@@ -8,14 +8,10 @@ use SpecialPage;
 class SpecialWikiList extends SpecialPage {
 
 	/**
-	 *
 	 * @var Output
 	 */
 	private $output;
 
-	/**
-	 *
-	 */
 	public function __construct() {
 		parent::__construct( 'WikiList', 'edit-wikilist' );
 	}

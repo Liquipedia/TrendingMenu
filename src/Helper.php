@@ -73,7 +73,6 @@ class Helper {
 	}
 
 	/**
-	 *
 	 * @param string $jsonData
 	 */
 	public static function update( $jsonData ) {
@@ -105,7 +104,6 @@ class Helper {
 	}
 
 	/**
-	 *
 	 * @param string $wiki
 	 */
 	public static function add( $wiki ) {
@@ -151,7 +149,6 @@ class Helper {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	public static function getWikiNamesForDropList() {
@@ -177,7 +174,6 @@ class Helper {
 	}
 
 	/**
-	 *
 	 * @param string $slug
 	 */
 	public static function delete( $slug ) {

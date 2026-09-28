@@ -8,9 +8,6 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class WikiList extends ApiBase {
 
-	/**
-	 *
-	 */
 	public function execute() {
 		// Tell squids to cache
 		$this->getMain()->setCacheMode( 'public' );
