@@ -62,49 +62,15 @@ foreach ( $liquipedia_wikis as $wiki => $info ) {
 			continue;
 		}
 
-		// Try to match MW encoding
-		$encoded_page = rawurlencode( $page );
-		$encoded_page = str_replace(
-			[ '%2F', '%3A', '%28', '%29', '%21' ],
-			[ '/', ':', '(', ')', '!' ],
-			$encoded_page
-		);
-
-		// Query varnish directly to avoid frontend HTTPS overhead
-		$full_url = "http://127.0.0.1:6081/$wiki/$encoded_page";
-
-		curl_setopt( $ch, CURLOPT_URL, $full_url );
-
-		$ret = curl_exec( $ch );
-		if ( !curl_errno( $ch ) ) {
-			// Don't parse more than necessary
-			$ret = mb_substr( $ret, 0, 1024 );
-			if ( preg_match( "/<title>(.+?)<\/title>/", $ret, $m ) ) {
-				$display_title = $m[1];
-
-				// Strip " - Liquipedia Wild Rift Wiki" etc
-				$pos = mb_strpos( $display_title, ' - Liquipedia ' );
-				if ( $pos != -1 ) {
-					$display_title = mb_substr( $display_title, 0, $pos );
-				}
-
-				$display_title = html_entity_decode( $display_title, ENT_QUOTES, 'UTF-8' );
-			}
-		} else {
-			$display_title = '';
-		}
-
-		$oldTextSql = 'SELECT old_text '
-			. 'FROM ' . $dbPrefix . 'text t, '
-			. $dbPrefix . 'page p, '
-			. $dbPrefix . 'flaggedpages f, '
-			. $dbPrefix . 'content c, '
-			. $dbPrefix . 'slots s '
-			. 'WHERE t.old_id = SUBSTR(c.content_address, 4) '
-			. 'AND c.content_id = s.slot_content_id '
-			. 'AND s.slot_revision_id = f.fp_stable '
-			. 'AND f.fp_page_id = p.page_id '
-			. 'AND p.page_namespace IN (0, 134) '
+		$oldTextSql = 'SELECT t.old_text, pp.pp_value AS display_title '
+			. 'FROM ' . $dbPrefix . 'page p '
+			. 'JOIN ' . $dbPrefix . 'flaggedpages f ON f.fp_page_id = p.page_id '
+			. 'JOIN ' . $dbPrefix . 'slots s ON s.slot_revision_id = f.fp_stable '
+			. 'JOIN ' . $dbPrefix . 'content c ON c.content_id = s.slot_content_id '
+			. 'JOIN ' . $dbPrefix . 'text t ON t.old_id = SUBSTR(c.content_address, 4) '
+			. 'LEFT JOIN ' . $dbPrefix . 'page_props pp '
+			. 'ON pp.pp_page = p.page_id AND pp.pp_propname = \'displaytitle\' '
+			. 'WHERE p.page_namespace IN (0, 134) '
 			. 'AND p.page_is_redirect = 0 '
 			. 'AND p.page_title = :pageTitle';
 
@@ -115,11 +81,24 @@ foreach ( $liquipedia_wikis as $wiki => $info ) {
 			continue;
 		}
 
-		/*if ( preg_match( "/{{DISPLAYTITLE:(.+?)}}/", $oldText[ 'old_text' ], $m ) ) {
-			$display_title = trim( $m[ 1 ] );
-		} else if ( preg_match( "/{{Infobox player\s*\|\s?id\s?=\s?(.+?)[\\n|}|\|]/i", $oldText[ 'old_text' ], $m ) ) {
-			$display_title = trim( $m[ 1 ] );
-		}*/
+		// displaytitle is stored as safe HTML; convert it to the text used in <title>.
+		if ( !empty( $oldText[ 'display_title' ] ) ) {
+			$display_title = strip_tags( $oldText[ 'display_title' ] );
+			$display_title = html_entity_decode(
+				$display_title,
+				ENT_QUOTES | ENT_HTML5,
+				'UTF-8'
+			);
+			$display_title = preg_replace( '/[ \r\n\t]+/', ' ', $display_title ) ?? '';
+			$display_title = trim( $display_title );
+			if ( $display_title === '' ) {
+				$display_title = str_replace( '_', ' ', $page );
+			}
+		} else {
+			// MediaWiki uses the canonical page title when DISPLAYTITLE is not set.
+			$display_title = str_replace( '_', ' ', $page );
+		}
+
 		if ( preg_match( '/\|tickername=(.+?)[\|}\r\n]/', $oldText[ 'old_text' ], $m ) ) {
 			$ticker_title = trim( $m[ 1 ] );
 		}
